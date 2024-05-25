@@ -1,37 +1,30 @@
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet } from "react-native";
+import HomeScreen from "./components/HomeScreen";
+import ProfileScreen from "./components/ProfileScreen";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <NavigationContainer>
       <StatusBar style="auto" />
-      <View style={styles.headerContainer}>
-        <Text style={styles.headline}>Schmerz ade!</Text>
-        {/* change image to actual logo later */}
-        <Image source={require("./assets/icon.png")} style={styles.image} />
-      </View>
-    </View>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: "Welcome" }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{ title: "Your Profile" }}
+        ></Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  headerContainer: {
-    flexDirection: "row",
-    alignItems: "flex-end",
-    gap: 20,
-  },
-  headline: {
-    fontSize: 34,
-    fontWeight: "bold",
-  },
-  image: {
-    width: 50,
-    height: 50,
-  },
-});
+const styles = StyleSheet.create({});
