@@ -9,7 +9,7 @@ const mainNavItems = [
     buttonText: "Stress sammeln",
   },
   {
-    navDestination: "Stressabschreiben",
+    navDestination: "StressAbschreiben",
     buttonText: "Stress abschreiben",
   },
   {

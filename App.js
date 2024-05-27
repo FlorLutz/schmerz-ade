@@ -6,6 +6,7 @@ import HomeScreen from "./screens/HomeScreen";
 import KursScreen from "./screens/KursScreen";
 import UebungenScreen from "./screens/UebungenScreen";
 import StressSammelnScreen from "./screens/StressSammelnScreen";
+import StressAbschreibenScreen from "./screens/StressAbschreibenScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -30,11 +31,11 @@ export default function App() {
           component={StressSammelnScreen}
           options={{ title: "Stress sammeln" }}
         ></Stack.Screen>
-        {/* <Stack.Screen
-          name="Kurs"
+        <Stack.Screen
+          name="StressAbschreiben"
           component={StressAbschreibenScreen}
           options={{ title: "Stress abschreiben" }}
-        ></Stack.Screen> */}
+        ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

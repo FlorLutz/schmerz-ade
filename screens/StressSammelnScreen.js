@@ -1,8 +1,10 @@
 import { StyleSheet, View, Text, ScrollView, TextInput } from "react-native";
 import React, { useState } from "react";
 import StressorList from "../components/StressorList";
+import "react-native-get-random-values";
+import { v4 as uuid } from "uuid";
 
-export default function UebungenScreen({ navigation }) {
+export default function StressSammelnScreen({ navigation }) {
   const [showInfo, setShowInfo] = useState(true);
   const [enteredStressor, setEnteredStressor] = useState();
   const [stressors, setStressors] = useState([]);
@@ -19,10 +21,12 @@ export default function UebungenScreen({ navigation }) {
   function handleStressorSubmit() {
     if (enteredStressor.trim() === "") {
       setIsInvalidInput(true);
+      this.textInput.clear();
     } else {
+      const id = uuid();
       setStressors((currentStressors) => [
         {
-          key: enteredStressor,
+          key: id,
           stressor: enteredStressor,
           isCrossedOut: false,
         },
@@ -44,6 +48,12 @@ export default function UebungenScreen({ navigation }) {
     ]);
   }
 
+  function handleDeleteItem(id) {
+    setStressors((currentStressors) => [
+      ...currentStressors.filter((stressor) => stressor.key !== id),
+    ]);
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -53,7 +63,7 @@ export default function UebungenScreen({ navigation }) {
         <View style={styles.backView}>
           <Text
             style={styles.backText}
-            onPress={() => navigation.navigate("Home")}
+            onPress={() => navigation.navigate("Uebungen")}
           >
             zurück
           </Text>
@@ -67,19 +77,22 @@ export default function UebungenScreen({ navigation }) {
             TMS-Symptomen führen. Lasst uns nun also ergründen, wie wir den
             Druck auf unser System ein wenig ablassen können. Dazu sollten wir
             uns zu allererst einmal bewusst machen, was in unserem Leben aktuell
-            Stress verursacht. Häufig sind wir im Alltag so beschäftigt, dass
-            wir nur selten innehalten, um darüber nachzudenken. Hier hast Du nun
-            die Gelegenheit, Dinge aufzuschreiben, von denen Du denkst, dass sie
-            für Dich Stress verursachen. Das können schwierige familiäre
+            Stress verursacht.{"\n"}
+            Häufig sind wir im Alltag so beschäftigt, dass wir nur selten
+            innehalten, um darüber nachzudenken. Hier hast Du nun die
+            Gelegenheit, Dinge aufzuschreiben, von denen Du denkst, dass sie für
+            Dich Stress verursachen. Das können schwierige familiäre
             Situationen, Ärger auf Arbeit, aber auch freudige Entwicklungen wie
             eine Befürderung oder eine bevorstehende Hochzeit sein. Stressoren
             können in der Vergangenheit liegen, ganz aktuell sein oder auch
-            Zukunftsängste betreffen. Wie detailiert Du vorgehst entscheidest Du
-            selbst. Wichtig ist, dass Du mit den Schlagwörtern etwas anfangen
-            kannst. Diese Liste ist ganz für Dich, zögere also nicht ganz offen
-            mit Dir zu sein. Nachdem Du die nächste Übung "Stess abschreiben"
-            begonnen hast, kannst Du hier zurückkommen und bearbeitete Themen
-            aus der Liste streichen.
+            Zukunftsängste betreffen.{"\n"}
+            Wie detailiert Du vorgehst entscheidest Du selbst. Wichtig ist, dass
+            Du mit den Schlagwörtern etwas anfangen kannst. Diese Liste ist ganz
+            für Dich, zögere also nicht ganz offen mit Dir zu sein. Es handelt
+            sich außerdem um eine offene Liste. Wann immer Dir neue Themen
+            einfallen, schreibe sie dazu. Nachdem Du die nächste Übung "Stess
+            abschreiben" begonnen hast, kannst Du hier zurückkommen und
+            bearbeitete Themen aus der Liste streichen.
           </Text>
         ) : (
           <View>
@@ -115,6 +128,7 @@ export default function UebungenScreen({ navigation }) {
             <StressorList
               stressors={stressors}
               toggleCrossOut={toggleCrossOut}
+              deleteItem={handleDeleteItem}
             />
           </View>
         )}
