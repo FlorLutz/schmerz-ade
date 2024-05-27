@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, Button } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import MainNav from "../components/MainNav";
 import NavFooter from "../components/NavFooter";
 
@@ -33,7 +33,6 @@ export default function ProfileScreen({ navigation }) {
         <View>
           <Text style={styles.headline}>Kurs</Text>
         </View>
-        {/* change image to actual logo later */}
         <View style={styles.backView}>
           <Text
             style={styles.backText}
