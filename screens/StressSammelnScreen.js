@@ -96,7 +96,7 @@ export default function StressSammelnScreen({ navigation }) {
           </Text>
         ) : (
           <View>
-            {/* input Feld, create button, state for posts, posts als components, Streichenfunktion als Toggle bauen */}
+            {/* refactoring!!! */}
             <View>
               <View style={styles.inputContainer}>
                 <TextInput

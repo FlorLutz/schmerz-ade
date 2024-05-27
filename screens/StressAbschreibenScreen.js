@@ -68,7 +68,7 @@ export default function SressAbschreibenScreen({ navigation }) {
           </Text>
         ) : (
           <View>
-            {/* input Feld, create button, state for posts, posts als components, Streichenfunktion als Toggle bauen */}
+            {/* timer einbauen */}
             <View>
               <View style={styles.inputContainer}>
                 <TextInput
