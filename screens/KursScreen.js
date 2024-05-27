@@ -69,25 +69,11 @@ const styles = StyleSheet.create({
   },
   backView: {
     borderRadius: 20,
-    // marginVertical: 6,
     backgroundColor: "#0c4a6e",
     width: "25%",
   },
   backText: {
     padding: 12,
-    textAlign: "center",
-    fontWeight: "bold",
-    fontSize: 18,
-    color: "#7dd3fc",
-  },
-  navButtonView: {
-    borderRadius: 20,
-    marginVertical: 6,
-    backgroundColor: "#0c4a6e",
-    width: "80%",
-  },
-  navButtonText: {
-    padding: 18,
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 18,
