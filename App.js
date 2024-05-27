@@ -7,6 +7,14 @@ import KursScreen from "./screens/KursScreen";
 import UebungenScreen from "./screens/UebungenScreen";
 import StressSammelnScreen from "./screens/StressSammelnScreen";
 import StressAbschreibenScreen from "./screens/StressAbschreibenScreen";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons/faTrashCan";
+import { faHourglass } from "@fortawesome/free-solid-svg-icons/faHourglass";
+import { faHourglassEnd } from "@fortawesome/free-solid-svg-icons/faHourglassEnd";
+import { faX } from "@fortawesome/free-solid-svg-icons/faX";
+
+library.add(fab, faTrashCan, faHourglass, faHourglassEnd, faX);
 
 const Stack = createNativeStackNavigator();
 

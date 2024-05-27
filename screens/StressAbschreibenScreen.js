@@ -9,6 +9,7 @@ import {
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import Timer from "../components/Timer";
 
 export default function SressAbschreibenScreen({ navigation }) {
   const [showInfo, setShowInfo] = useState(true);
@@ -68,7 +69,7 @@ export default function SressAbschreibenScreen({ navigation }) {
           </Text>
         ) : (
           <View>
-            {/* timer einbauen */}
+            <Timer />
             <View>
               <View style={styles.inputContainer}>
                 <TextInput
@@ -78,6 +79,7 @@ export default function SressAbschreibenScreen({ navigation }) {
                   ref={(input) => {
                     this.textInput = input;
                   }}
+                  autoFocus={true}
                 />
                 <View style={styles.deleteButton}>
                   <TouchableOpacity onPress={handleDeleteInput}>

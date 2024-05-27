@@ -8,6 +8,7 @@ export default function MainNav({ navigation, navItems }) {
       <View style={styles.mainNavView}>
         {navItems.map((navItem) => (
           <NavButton
+            key={navItem.navDestination}
             navigation={navigation}
             navDestination={navItem.navDestination}
             buttonText={navItem.buttonText}

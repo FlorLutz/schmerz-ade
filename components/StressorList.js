@@ -11,7 +11,7 @@ export default function StressorList({
   return (
     <View style={styles.stressorList}>
       {stressors.map((stressor) => (
-        <View style={styles.stressorView}>
+        <View style={styles.stressorView} key={stressor.key}>
           <Text
             style={{
               paddingVertical: 12,
@@ -23,7 +23,6 @@ export default function StressorList({
                 ? "line-through"
                 : "none",
             }}
-            key={stressor.key}
             onPress={() => toggleCrossOut(stressor.key)}
           >
             {stressor.stressor}
