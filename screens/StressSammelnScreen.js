@@ -1,11 +1,47 @@
-import { StyleSheet, View, Text, ScrollView, Button } from "react-native";
-
+import { StyleSheet, View, Text, ScrollView, TextInput } from "react-native";
 import React, { useState } from "react";
+import StressorList from "../components/StressorList";
 
 export default function UebungenScreen({ navigation }) {
   const [showInfo, setShowInfo] = useState(true);
+  const [enteredStressor, setEnteredStressor] = useState();
+  const [stressors, setStressors] = useState([]);
+  const [isInvalidInput, setIsInvalidInput] = useState(false);
+
   function toggleShowInfo() {
     setShowInfo(!showInfo);
+  }
+
+  function handleInputChange(enteredText) {
+    setEnteredStressor(enteredText);
+  }
+
+  function handleStressorSubmit() {
+    if (enteredStressor.trim() === "") {
+      setIsInvalidInput(true);
+    } else {
+      setStressors((currentStressors) => [
+        {
+          key: enteredStressor,
+          stressor: enteredStressor,
+          isCrossedOut: false,
+        },
+        ...currentStressors,
+      ]);
+      setIsInvalidInput(false);
+      setEnteredStressor("");
+      this.textInput.clear();
+    }
+  }
+
+  function toggleCrossOut(id) {
+    setStressors((currentStressors) => [
+      ...currentStressors.map((stressor) =>
+        stressor.key !== id
+          ? stressor
+          : { ...stressor, isCrossedOut: !stressor.isCrossedOut }
+      ),
+    ]);
   }
 
   return (
@@ -38,12 +74,48 @@ export default function UebungenScreen({ navigation }) {
             Situationen, Ärger auf Arbeit, aber auch freudige Entwicklungen wie
             eine Befürderung oder eine bevorstehende Hochzeit sein. Stressoren
             können in der Vergangenheit liegen, ganz aktuell sein oder auch
-            Zukunftsängste betreffen. Diese Liste ist ganz für Dich, zögere also
-            nicht ganz offen mit Dir zu sein.
+            Zukunftsängste betreffen. Wie detailiert Du vorgehst entscheidest Du
+            selbst. Wichtig ist, dass Du mit den Schlagwörtern etwas anfangen
+            kannst. Diese Liste ist ganz für Dich, zögere also nicht ganz offen
+            mit Dir zu sein. Nachdem Du die nächste Übung "Stess abschreiben"
+            begonnen hast, kannst Du hier zurückkommen und bearbeitete Themen
+            aus der Liste streichen.
           </Text>
         ) : (
           <View>
-            <Text>Hier entsteht die Übung</Text>
+            {/* input Feld, create button, state for posts, posts als components, Streichenfunktion als Toggle bauen */}
+            <View>
+              <View style={styles.inputContainer}>
+                <TextInput
+                  style={styles.stressInput}
+                  placeholder="Schreib ein Stressthema"
+                  onChangeText={handleInputChange}
+                  ref={(input) => {
+                    this.textInput = input;
+                  }}
+                />
+                <View style={styles.addButton}>
+                  <Text
+                    style={styles.buttonText}
+                    onPress={handleStressorSubmit}
+                  >
+                    +
+                  </Text>
+                </View>
+              </View>
+              {isInvalidInput && (
+                <View>
+                  <Text style={styles.invalidInputText}>
+                    Das war eine ungültige Texteingabe.{"\n"}Bitte versuche es
+                    noch einmal.
+                  </Text>
+                </View>
+              )}
+            </View>
+            <StressorList
+              stressors={stressors}
+              toggleCrossOut={toggleCrossOut}
+            />
           </View>
         )}
         <View style={styles.buttonView}>
@@ -90,6 +162,27 @@ const styles = StyleSheet.create({
   },
   infoText: {
     fontSize: 18,
+  },
+  inputContainer: {
+    flexDirection: "row",
+    gap: 20,
+    justifyContent: "space-between",
+    marginBottom: 12,
+  },
+  stressInput: {
+    paddingHorizontal: 12,
+    backgroundColor: "white",
+    borderRadius: 20,
+    fontSize: 18,
+    width: "70%",
+  },
+  addButton: {
+    borderRadius: 20,
+    backgroundColor: "#0c4a6e",
+    alignSelf: "center",
+  },
+  invalidInputText: {
+    color: "red",
   },
   buttonView: {
     borderRadius: 20,
