@@ -71,6 +71,8 @@ export default function Timer() {
               keyboardType="numeric"
               onChangeText={handleNumberChange}
               defaultValue="12"
+              autFocus={true}
+              maxLength={2}
             />
           </View>
           <CustomButton iconName={"play"} handlerFunction={handleTimerToggle} />

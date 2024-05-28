@@ -79,7 +79,6 @@ export default function SressAbschreibenScreen({ navigation }) {
                   ref={(input) => {
                     this.textInput = input;
                   }}
-                  autoFocus={true}
                 />
                 <View style={styles.deleteButton}>
                   <TouchableOpacity onPress={handleDeleteInput}>
