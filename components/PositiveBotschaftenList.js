@@ -9,15 +9,11 @@ const presetPositiveBotschaften = [
   { key: 3, botschaft: "Ich bin entspannt." },
 ];
 
-export default function StressorList({
-  stressors,
-  toggleCrossOut,
-  deleteItem,
-}) {
+export default function StressorList({ messages, deleteItem }) {
   return (
     <View style={styles.stressorList}>
-      {presetPositiveBotschaften.map((botschaft) => (
-        <View style={styles.stressorView} key={botschaft.key}>
+      {presetPositiveBotschaften.map((message) => (
+        <View style={styles.messageView} key={message.key}>
           <Text
             style={{
               paddingVertical: 12,
@@ -27,24 +23,14 @@ export default function StressorList({
               color: "#7dd3fc",
             }}
           >
-            {botschaft.botschaft}
+            {message.botschaft}
           </Text>
         </View>
       ))}
-      {stressors.map((stressor) => (
-        <View style={styles.stressorView} key={stressor.key}>
-          <Text
-            style={{
-              paddingVertical: 12,
-              paddingHorizontal: 18,
-              fontSize: 18,
-              width: "80%",
-              color: "#7dd3fc",
-            }}
-          >
-            {stressor.stressor}
-          </Text>
-          <TouchableOpacity onPress={() => deleteItem(stressor.key)}>
+      {messages.map((message) => (
+        <View style={styles.messageView} key={message.key}>
+          <Text style={styles.messageText}>{message.botschaft}</Text>
+          <TouchableOpacity onPress={() => deleteItem(message.key)}>
             <FontAwesomeIcon icon={faTrashCan} style={styles.deleteIcon} />
           </TouchableOpacity>
         </View>
@@ -57,7 +43,7 @@ const styles = StyleSheet.create({
   stressorList: {
     marginBottom: 18,
   },
-  stressorView: {
+  messageView: {
     flexDirection: "row",
     justifyContent: "space-between",
     borderRadius: 20,
@@ -70,13 +56,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     color: "#7dd3fc",
   },
-  //   stressorText: {
-  //     paddingVertical: 12,
-  //     paddingHorizontal: 18,
-  //     fontSize: 18,
-  //     color: "#7dd3fc",
-  //     // textAlign: "center",
-  //     // fontWeight: "bold",
-  //     // textDecorationLine: "line-through",
-  //   },
+  messageText: {
+    paddingVertical: 12,
+    paddingHorizontal: 18,
+    fontSize: 18,
+    width: "80%",
+    color: "#7dd3fc",
+  },
 });

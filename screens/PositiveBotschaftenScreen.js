@@ -28,8 +28,7 @@ export default function PositiveBotschaftenScreen({ navigation }) {
         ...currentMessages,
         {
           key: id,
-          stressor: enteredMessage,
-          isCrossedOut: false,
+          botschaft: enteredMessage,
         },
       ]);
       setIsInvalidInput(false);
@@ -129,7 +128,7 @@ export default function PositiveBotschaftenScreen({ navigation }) {
               )}
             </View>
             <PositiveBotschaftenList
-              stressors={messages}
+              messages={messages}
               deleteItem={handleDeleteItem}
             />
           </View>
