@@ -13,8 +13,10 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons/faTrashCan";
 import { faHourglass } from "@fortawesome/free-solid-svg-icons/faHourglass";
 import { faHourglassEnd } from "@fortawesome/free-solid-svg-icons/faHourglassEnd";
 import { faX } from "@fortawesome/free-solid-svg-icons/faX";
+import { faPlay } from "@fortawesome/free-solid-svg-icons/faPlay";
+import { faPause } from "@fortawesome/free-solid-svg-icons/faPause";
 
-library.add(fab, faTrashCan, faHourglass, faHourglassEnd, faX);
+library.add(fab, faTrashCan, faHourglassEnd, faX, faPlay, faPause);
 
 const Stack = createNativeStackNavigator();
 
