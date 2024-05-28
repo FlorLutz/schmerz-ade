@@ -5,16 +5,16 @@ import NavFooter from "../components/NavFooter";
 
 const mainNavItems = [
   {
+    navDestination: "PositiveBotschaften",
+    buttonText: "Positive Botschaften",
+  },
+  {
     navDestination: "StressSammeln",
     buttonText: "Stress sammeln",
   },
   {
     navDestination: "StressAbschreiben",
     buttonText: "Stress abschreiben",
-  },
-  {
-    navDestination: "WeitereUebung",
-    buttonText: "Weitere Übung",
   },
   {
     navDestination: "WeitereUebung2",

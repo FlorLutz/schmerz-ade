@@ -7,16 +7,15 @@ import KursScreen from "./screens/KursScreen";
 import UebungenScreen from "./screens/UebungenScreen";
 import StressSammelnScreen from "./screens/StressSammelnScreen";
 import StressAbschreibenScreen from "./screens/StressAbschreibenScreen";
+import PositiveBotschaftenScreen from "./screens/PositiveBotschaftenScreen";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons/faTrashCan";
-import { faHourglass } from "@fortawesome/free-solid-svg-icons/faHourglass";
-import { faHourglassEnd } from "@fortawesome/free-solid-svg-icons/faHourglassEnd";
 import { faX } from "@fortawesome/free-solid-svg-icons/faX";
 import { faPlay } from "@fortawesome/free-solid-svg-icons/faPlay";
 import { faPause } from "@fortawesome/free-solid-svg-icons/faPause";
 
-library.add(fab, faTrashCan, faHourglassEnd, faX, faPlay, faPause);
+library.add(fab, faTrashCan, faX, faPlay, faPause);
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +34,11 @@ export default function App() {
           name="Uebungen"
           component={UebungenScreen}
           options={{ title: "Übungen" }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="PositiveBotschaften"
+          component={PositiveBotschaftenScreen}
+          options={{ title: "Positive Botschaften" }}
         ></Stack.Screen>
         <Stack.Screen
           name="StressSammeln"
