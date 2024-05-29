@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import Timer from "../components/Timer";
+import { stressAbschreibenText } from "../lib/texts";
 
 export default function SressAbschreibenScreen({ navigation }) {
   const [showInfo, setShowInfo] = useState(true);
@@ -39,34 +40,7 @@ export default function SressAbschreibenScreen({ navigation }) {
       </View>
       <ScrollView>
         {showInfo ? (
-          <Text style={styles.infoText}>
-            In der letzten Übung hast Du eine Liste erstellt, mit Dingen, die in
-            Dir Stress erzeugen. Das ist ein guter erster Schritt, um sich
-            diesen Stressoren bewusst zu werden. Nun wollen wir aber noch ein
-            wenig tiefer eintauchen und die einzelnen Stressfaktoren näher
-            betrachten. Vielleicht sind Dir auch schon zuvor einige Gedanken zu
-            den einzelnen Punkten aufgekommen.{"\n"}
-            Versuche jetzt 12 Minuten lang in einen kreativen Schreibprozess zu
-            kommen, bei dem Du einfach frei zu einem Thema aus der Sammlung
-            Gedanken aufschreibst. Du musst keinen Literaturnobelpreis
-            anstreben, sondern die Dinge, die Dir in den Sinn kommen ins Handy
-            oder aufs Papier zu bringen. Wähle selbst Dein Medium. Manchen
-            Menschen fällt es leichter, mit Stift und Papier zu arbeiten. Nach
-            einer Weile solltest Du in Deinen Körper spüren. Was fühlst Du dort
-            und wo? Sorgt ein Streit von letzter Woche noch immer für
-            angespannte Nackenmuskeln oder Bauchgrummeln? Gehe diesen
-            Empfindungen nach und schreibe auch darüber. Werte dabei nicht,
-            sondern nimm einfach war und benenne. Damit zeigst Du Deinem
-            Unterbewusstsein, dass es okay ist, auch unangenehme Gefühle zu
-            spüren.{"\n"}
-            Nach Ablauf der Zeit ertönt der Wecker. Klicke nun auf "Zerstören"
-            bzw. zerreiß Dein Blatt oder vernichte es anders. Damit nimmst Du
-            symbolisch Abschied von dem belastenden Themen. Wiederhole diese
-            Übung so oft, wie Du magst und finde eine gute Routine für Dich -
-            vielleicht immer abends nach dem Essen. Streiche so Stück für Stück
-            die Themen aus der vorherigen Übung und merke, wie vielleicht ein
-            wenig Entspanntheit sich einstellt.
-          </Text>
+          <Text style={styles.infoText}>{stressAbschreibenText}</Text>
         ) : (
           <View>
             <Timer />
