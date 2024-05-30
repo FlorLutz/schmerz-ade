@@ -7,14 +7,17 @@ const mainNavItems = [
   {
     navDestination: "PositiveBotschaften",
     buttonText: "Positive Botschaften",
+    imagePath: "./../assets/images/positiveBotschaften.jpg",
   },
   {
     navDestination: "StressSammeln",
     buttonText: "Stress sammeln",
+    imagePath: "./../assets/images/stressSammeln.jpg",
   },
   {
     navDestination: "StressAbschreiben",
     buttonText: "Stress abschreiben",
+    imagePath: "./../assets/images/stressAbschreiben.jpg",
   },
   {
     navDestination: "WeitereUebung2",

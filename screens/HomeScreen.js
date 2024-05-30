@@ -11,6 +11,7 @@ const mainNavItems = [
   {
     navDestination: "Uebungen",
     buttonText: "Übungen",
+    imagePath: "./../assets/images/uebungen.jpg",
   },
   {
     navDestination: "Notizen",
@@ -35,8 +36,10 @@ export default function HomeScreen({ navigation }) {
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.headline}>Schmerz ade!</Text>
-        {/* change image to actual logo later */}
-        <Image source={require("../assets/icon.png")} style={styles.image} />
+        <Image
+          source={require("./../assets/images/2-feathers-logo-flat.png")}
+          style={styles.image}
+        />
       </View>
       <MainNav navigation={navigation} navItems={mainNavItems} />
       <NavFooter navigation={navigation} />
@@ -63,7 +66,7 @@ const styles = StyleSheet.create({
     color: "#0c4a6e",
   },
   image: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 40,
   },
 });
