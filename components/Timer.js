@@ -2,7 +2,7 @@ import { View, Text, TextInput, StyleSheet } from "react-native";
 import React from "react";
 import CustomButton from "./CustomButton";
 import { useState, useEffect } from "react";
-// import Sound from "react-native-sound";
+import { Audio } from "expo-av";
 
 //add pause function and fix timer reset and restart (loop fires too often)
 
@@ -49,6 +49,29 @@ export default function Timer() {
   function handleNumberChange(text) {
     setDuration(Number(text));
   }
+
+  if (countdownSeconds === 0) {
+    playSound();
+  }
+  async function playSound() {
+    console.log("Loading Sound");
+    const { sound } = await Audio.Sound.createAsync(
+      require("./../assets/audios/bell.wav")
+    );
+    setSound(sound);
+
+    console.log("Playing Sound");
+    await sound.playAsync();
+  }
+
+  useEffect(() => {
+    return sound
+      ? () => {
+          console.log("Unloading Sound");
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
 
   //   function ringAlert() {
   // sound.play((success) => {
