@@ -10,7 +10,7 @@ import StressSammelnScreen from "./screens/StressSammelnScreen";
 import StressAbschreibenScreen from "./screens/StressAbschreibenScreen";
 import PositiveBotschaftenScreen from "./screens/PositiveBotschaftenScreen";
 import WasTutMirGutScreen from "./screens/WasTutMirGutScreen";
-import WasTutMirNichtGutScreen from "./screens/WasTutMirGutScreen";
+import WasTutMirNichtGutScreen from "./screens/WasTutMirNichtGutScreen";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons/faTrashCan";

@@ -4,8 +4,8 @@ import React from "react";
 export default function InfoText({ text }) {
   return (
     <View>
-      {text.map((paragraph) => (
-        <Text key={paragraph.index} style={styles.infoText}>
+      {text.map((paragraph, index) => (
+        <Text key={index} style={styles.infoText}>
           {"   " + paragraph}
         </Text>
       ))}

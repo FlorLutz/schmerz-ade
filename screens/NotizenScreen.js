@@ -58,6 +58,7 @@ export default function NotizenScreen({ navigation }) {
           <View>
             <View>
               <InputWithAdd
+                placeHolder={"persönliche Notizen..."}
                 onInputChange={handleInputChange}
                 onSubmit={handleInputSubmit}
               />

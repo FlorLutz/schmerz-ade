@@ -6,6 +6,7 @@ import { wasTutMirNichtGutText } from "../lib/texts";
 import Header from "../components/Header";
 import StressorList from "../components/StressorList";
 import InfoText from "../components/InfoText";
+import InputWithAdd from "../components/InputWithAdd";
 
 export default function WasTutMirNichtGutScreen({ navigation }) {
   const [showInfo, setShowInfo] = useState(true);
@@ -52,28 +53,18 @@ export default function WasTutMirNichtGutScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Header headerText="Was tut mir gut?" />
+      <Header headerText="Was tut mir nicht gut?" />
       <ScrollView>
         {showInfo ? (
           <InfoText text={wasTutMirNichtGutText} />
         ) : (
           <View>
             <View>
-              <View style={styles.inputContainer}>
-                <TextInput
-                  style={styles.messageInput}
-                  placeholder="Das tut mir nicht gut..."
-                  onChangeText={handleInputChange}
-                  ref={(input) => {
-                    this.textInput = input;
-                  }}
-                />
-                <View style={styles.addButton}>
-                  <Text style={styles.buttonText} onPress={handleSubmit}>
-                    +
-                  </Text>
-                </View>
-              </View>
+              <InputWithAdd
+                placeHolder="Das tut mir nicht gut..."
+                onInputChange={handleInputChange}
+                onSubmit={handleSubmit}
+              />
               {isInvalidInput && (
                 <View>
                   <Text style={styles.invalidInputText}>
@@ -104,24 +95,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 24,
     paddingHorizontal: 24,
-  },
-  inputContainer: {
-    flexDirection: "row",
-    gap: 20,
-    justifyContent: "space-between",
-    marginBottom: 12,
-  },
-  messageInput: {
-    paddingHorizontal: 12,
-    backgroundColor: "white",
-    borderRadius: 20,
-    fontSize: 18,
-    width: "70%",
-  },
-  addButton: {
-    borderRadius: 20,
-    backgroundColor: "#0c4a6e",
-    alignSelf: "center",
   },
   invalidInputText: {
     color: "red",

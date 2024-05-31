@@ -6,6 +6,7 @@ import { v4 as uuid } from "uuid";
 import { stressSammelnText } from "../lib/texts";
 import Header from "../components/Header";
 import InfoText from "../components/InfoText";
+import InputWithAdd from "../components/InputWithAdd";
 
 export default function StressSammelnScreen({ navigation }) {
   const [showInfo, setShowInfo] = useState(true);
@@ -66,24 +67,11 @@ export default function StressSammelnScreen({ navigation }) {
         ) : (
           <View>
             <View>
-              <View style={styles.inputContainer}>
-                <TextInput
-                  style={styles.stressInput}
-                  placeholder="Schreib ein Stressthema"
-                  onChangeText={handleInputChange}
-                  ref={(input) => {
-                    this.textInput = input;
-                  }}
-                />
-                <View style={styles.addButton}>
-                  <Text
-                    style={styles.buttonText}
-                    onPress={handleStressorSubmit}
-                  >
-                    +
-                  </Text>
-                </View>
-              </View>
+              <InputWithAdd
+                placeHolder="Schreib ein Stressthema"
+                onInputChange={handleInputChange}
+                onSubmit={handleStressorSubmit}
+              />
               {isInvalidInput && (
                 <View>
                   <Text style={styles.invalidInputText}>
@@ -118,24 +106,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 24,
     paddingHorizontal: 24,
-  },
-  inputContainer: {
-    flexDirection: "row",
-    gap: 20,
-    justifyContent: "space-between",
-    marginBottom: 12,
-  },
-  stressInput: {
-    paddingHorizontal: 12,
-    backgroundColor: "white",
-    borderRadius: 20,
-    fontSize: 18,
-    width: "70%",
-  },
-  addButton: {
-    borderRadius: 20,
-    backgroundColor: "#0c4a6e",
-    alignSelf: "center",
   },
   invalidInputText: {
     color: "red",

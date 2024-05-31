@@ -1,12 +1,12 @@
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import React from "react";
 
-export default function InputWithAdd({ onInputChange, onSubmit }) {
+export default function InputWithAdd({ onInputChange, onSubmit, placeHolder }) {
   return (
     <View style={styles.inputContainer}>
       <TextInput
         style={styles.messageInput}
-        placeholder="persönliche Notizen"
+        placeholder={placeHolder}
         onChangeText={onInputChange}
         ref={(input) => {
           this.textInput = input;
