@@ -5,28 +5,85 @@ import {
   StyleSheet,
   Text,
   View,
+  Platform,
 } from "react-native";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faLock } from "@fortawesome/free-solid-svg-icons/faLock";
 
 export default function NavButtonForGrid({
   navigation,
   buttonText,
   navDestination,
   imagePath,
+  premium,
+  opacity,
 }) {
   //WORK HERE ON CONDITIONAL IMAGES!
   // const image = imagePath ? imagePath : "./../assets/images/general.jpg";
-  var image = require("./../assets/images/general.jpg");
-  console.log(imagePath);
+  let image = require("./../assets/images/general.jpg");
+  navDestination === "PositiveBotschaften" &&
+    (image = require("./../assets/images/positiveBotschaften.jpg"));
+  navDestination === "StressSammeln" &&
+    (image = require("./../assets/images/stressSammeln.jpg"));
+  navDestination === "StressAbschreiben" &&
+    (image = require("./../assets/images/stressAbschreiben.jpg"));
+  navDestination === "Uebungen" &&
+    (image = require("./../assets/images/uebungen.jpg"));
+  navDestination === "Kurs" && (image = require("./../assets/images/kurs.jpg"));
+  navDestination === "Meditationen" &&
+    (image = require("./../assets/images/meditationen.jpg"));
+  navDestination === "WasTutMirGut" &&
+    (image = require("./../assets/images/wald-familie.jpg"));
+
+  console.log(image);
+
   // if (imagePath) {
   //   image = require(imagePath);
   // }
   return (
-    <View style={styles.navButtonView}>
+    <View
+      style={[
+        styles.navButtonView,
+        //Bsp. für nicht verfügbare Elemente
+        (premium || opacity) && { opacity: 0.6 },
+      ]}
+    >
       <Pressable
         style={styles.navButtonPressable}
         onPress={() => navigation.navigate(navDestination)}
+        disabled={premium ? true : false}
       >
-        <ImageBackground style={styles.navButtonBackground} source={image}>
+        <ImageBackground
+          source={image}
+          style={styles.navButtonBackground}
+          // style={{ resizeMode: "stretch" }}
+          resizeMode="cover"
+        >
+          {premium && (
+            <View
+              style={{
+                flexDirection: "row",
+                backgroundColor: "white",
+                gap: 16,
+                marginBottom: 60,
+                justifyContent: "center",
+                alignItems: "center",
+                paddingVertical: 8,
+              }}
+            >
+              <Text
+                style={{
+                  textAlign: "center",
+                  fontWeight: "bold",
+                  fontSize: 14,
+                  color: "#0c4a6e",
+                }}
+              >
+                Nur in Premium verfügbar
+              </Text>
+              <FontAwesomeIcon icon={faLock} style={{ color: "#0c4a6e" }} />
+            </View>
+          )}
           <Text style={styles.navButtonText}>{buttonText}</Text>
         </ImageBackground>
       </Pressable>
@@ -39,14 +96,11 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 20,
     margin: 6,
-    width: 100,
-    height: 100,
+    width: 200,
+    height: 200,
     backgroundColor: "#0c4a6e",
-    // maxWidth: "45%",
-    // width: "100%",
-
     elevation: 4, //shadow on Android
-    // overflow: Platform.OS === "android" ? "hidden" : "visible",
+    overflow: Platform.OS === "android" ? "hidden" : "visible",
     //shadow on iOS:
     backgroundColor: "white",
     shadowColor: "black",
@@ -58,21 +112,18 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 20,
     overflow: "hidden",
+    borderColor: "#0c4a6e",
+    borderWidth: 4,
   },
   navButtonBackground: {
     flex: 1,
     justifyContent: "flex-end",
-    borderRadius: 20,
   },
   navButtonText: {
-    // alignSelf: "flex-end",
-
     backgroundColor: "white",
-    // flex: 1,
-    // padding: 18,
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: 14,
-    color: "#7dd3fc",
+    fontSize: 18,
+    color: "#0c4a6e",
   },
 });

@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import StressorList from "../components/StressorList";
 import "react-native-get-random-values";
 import { v4 as uuid } from "uuid";
-import { stressSammelnText } from "../lib/texts";
+import { notizenText } from "../lib/texts";
 import Header from "../components/Header";
 import InfoText from "../components/InfoText";
+import InputWithAdd from "../components/InputWithAdd";
 
-export default function StressSammelnScreen({ navigation }) {
+export default function NotizenScreen({ navigation }) {
   const [showInfo, setShowInfo] = useState(true);
   const [enteredStressor, setEnteredStressor] = useState();
   const [stressors, setStressors] = useState([]);
@@ -21,7 +22,7 @@ export default function StressSammelnScreen({ navigation }) {
     setEnteredStressor(enteredText);
   }
 
-  function handleStressorSubmit() {
+  function handleInputSubmit() {
     if (enteredStressor.trim() === "") {
       setIsInvalidInput(true);
       this.textInput.clear();
@@ -41,16 +42,6 @@ export default function StressSammelnScreen({ navigation }) {
     }
   }
 
-  function toggleCrossOut(id) {
-    setStressors((currentStressors) => [
-      ...currentStressors.map((stressor) =>
-        stressor.key !== id
-          ? stressor
-          : { ...stressor, isCrossedOut: !stressor.isCrossedOut }
-      ),
-    ]);
-  }
-
   function handleDeleteItem(id) {
     setStressors((currentStressors) => [
       ...currentStressors.filter((stressor) => stressor.key !== id),
@@ -59,31 +50,17 @@ export default function StressSammelnScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Header headerText="Stress sammeln" />
+      <Header headerText="Notizen" />
       <ScrollView>
         {showInfo ? (
-          <InfoText text={stressSammelnText} />
+          <InfoText text={notizenText} />
         ) : (
           <View>
             <View>
-              <View style={styles.inputContainer}>
-                <TextInput
-                  style={styles.stressInput}
-                  placeholder="Schreib ein Stressthema"
-                  onChangeText={handleInputChange}
-                  ref={(input) => {
-                    this.textInput = input;
-                  }}
-                />
-                <View style={styles.addButton}>
-                  <Text
-                    style={styles.buttonText}
-                    onPress={handleStressorSubmit}
-                  >
-                    +
-                  </Text>
-                </View>
-              </View>
+              <InputWithAdd
+                onInputChange={handleInputChange}
+                onSubmit={handleInputSubmit}
+              />
               {isInvalidInput && (
                 <View>
                   <Text style={styles.invalidInputText}>
@@ -93,16 +70,12 @@ export default function StressSammelnScreen({ navigation }) {
                 </View>
               )}
             </View>
-            <StressorList
-              stressors={stressors}
-              toggleCrossOut={toggleCrossOut}
-              deleteItem={handleDeleteItem}
-            />
+            <StressorList stressors={stressors} deleteItem={handleDeleteItem} />
           </View>
         )}
         <View style={styles.buttonView}>
           <Text style={styles.buttonText} onPress={toggleShowInfo}>
-            {showInfo ? "Zur Übung" : "Infotext einblenden"}
+            {showInfo ? "Zu Deinen Notizen" : "Infotext einblenden"}
           </Text>
         </View>
       </ScrollView>
@@ -119,27 +92,6 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
     paddingHorizontal: 24,
   },
-  inputContainer: {
-    flexDirection: "row",
-    gap: 20,
-    justifyContent: "space-between",
-    marginBottom: 12,
-  },
-  stressInput: {
-    paddingHorizontal: 12,
-    backgroundColor: "white",
-    borderRadius: 20,
-    fontSize: 18,
-    width: "70%",
-  },
-  addButton: {
-    borderRadius: 20,
-    backgroundColor: "#0c4a6e",
-    alignSelf: "center",
-  },
-  invalidInputText: {
-    color: "red",
-  },
   buttonView: {
     borderRadius: 20,
     marginTop: 12,
@@ -153,5 +105,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18,
     color: "#7dd3fc",
+  },
+  invalidInputText: {
+    color: "red",
   },
 });

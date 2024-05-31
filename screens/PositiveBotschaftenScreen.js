@@ -4,6 +4,8 @@ import PositiveBotschaftenList from "./../components/PositiveBotschaftenList";
 import "react-native-get-random-values";
 import { v4 as uuid } from "uuid";
 import { positiveBotschaftenText } from "../lib/texts";
+import Header from "../components/Header";
+import InfoText from "../components/InfoText";
 
 export default function PositiveBotschaftenScreen({ navigation }) {
   const [showInfo, setShowInfo] = useState(true);
@@ -46,25 +48,12 @@ export default function PositiveBotschaftenScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <View>
-          <Text style={styles.headline}>Positive Botschaften</Text>
-        </View>
-        <View style={styles.backView}>
-          <Text
-            style={styles.backText}
-            onPress={() => navigation.navigate("Uebungen")}
-          >
-            zurück
-          </Text>
-        </View>
-      </View>
+      <Header headerText="Positive Botschaften" />
       <ScrollView>
         {showInfo ? (
-          <Text style={styles.infoText}>{positiveBotschaftenText}</Text>
+          <InfoText text={positiveBotschaftenText} />
         ) : (
           <View>
-            {/* refactoring!!! */}
             <View>
               <View style={styles.inputContainer}>
                 <TextInput
@@ -114,32 +103,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 24,
     paddingHorizontal: 24,
-  },
-  headerContainer: {
-    flexDirection: "row",
-    alignItems: "flex-end",
-    gap: 30,
-    marginBottom: 36,
-  },
-  headline: {
-    fontSize: 34,
-    fontWeight: "bold",
-    color: "#0c4a6e",
-  },
-  backView: {
-    borderRadius: 20,
-    backgroundColor: "#0c4a6e",
-    width: "25%",
-  },
-  backText: {
-    padding: 12,
-    textAlign: "center",
-    fontWeight: "bold",
-    fontSize: 18,
-    color: "#7dd3fc",
-  },
-  infoText: {
-    fontSize: 18,
   },
   inputContainer: {
     flexDirection: "row",

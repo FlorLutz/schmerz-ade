@@ -15,6 +15,8 @@ export default function MainNav({ navigation, navItems }) {
           navigation={navigation}
           navDestination={item.navDestination}
           imagePath={item.imagePath}
+          premium={item.premium}
+          opacity={item.opacity}
         />
       )}
       numColumns={2}
@@ -39,7 +41,7 @@ export default function MainNav({ navigation, navItems }) {
 const styles = StyleSheet.create({
   mainNavScrollView: {
     flex: 1,
-    width: "80%",
+    width: "90%",
     // alignItems: "center",
     // flexWrap: "wrap",
     // flexDirection: "row",

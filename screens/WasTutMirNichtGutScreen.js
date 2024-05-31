@@ -1,16 +1,20 @@
 import { StyleSheet, View, Text, ScrollView, TextInput } from "react-native";
 import React, { useState } from "react";
-import StressorList from "../components/StressorList";
 import "react-native-get-random-values";
 import { v4 as uuid } from "uuid";
-import { stressSammelnText } from "../lib/texts";
+import { wasTutMirNichtGutText } from "../lib/texts";
 import Header from "../components/Header";
+import StressorList from "../components/StressorList";
 import InfoText from "../components/InfoText";
 
-export default function StressSammelnScreen({ navigation }) {
+export default function WasTutMirNichtGutScreen({ navigation }) {
   const [showInfo, setShowInfo] = useState(true);
-  const [enteredStressor, setEnteredStressor] = useState();
-  const [stressors, setStressors] = useState([]);
+  const [enteredMessage, setEnteredMessage] = useState();
+  const [messages, setMessages] = useState([
+    { message: "ständiger Lärm", key: 1 },
+    { message: "keine Pausen", key: 2 },
+    { message: "Multitasking", key: 3 },
+  ]);
   const [isInvalidInput, setIsInvalidInput] = useState(false);
 
   function toggleShowInfo() {
@@ -18,68 +22,54 @@ export default function StressSammelnScreen({ navigation }) {
   }
 
   function handleInputChange(enteredText) {
-    setEnteredStressor(enteredText);
+    setEnteredMessage(enteredText);
   }
 
-  function handleStressorSubmit() {
-    if (enteredStressor.trim() === "") {
+  function handleSubmit() {
+    if (enteredMessage.trim() === "") {
       setIsInvalidInput(true);
       this.textInput.clear();
     } else {
       const id = uuid();
-      setStressors((currentStressors) => [
+      setMessages((currentMessages) => [
+        ...currentMessages,
         {
           key: id,
-          message: enteredStressor,
-          isCrossedOut: false,
+          message: enteredMessage,
         },
-        ...currentStressors,
       ]);
       setIsInvalidInput(false);
-      setEnteredStressor("");
+      setEnteredMessage("");
       this.textInput.clear();
     }
   }
 
-  function toggleCrossOut(id) {
-    setStressors((currentStressors) => [
-      ...currentStressors.map((stressor) =>
-        stressor.key !== id
-          ? stressor
-          : { ...stressor, isCrossedOut: !stressor.isCrossedOut }
-      ),
-    ]);
-  }
-
   function handleDeleteItem(id) {
-    setStressors((currentStressors) => [
-      ...currentStressors.filter((stressor) => stressor.key !== id),
+    setMessages((currentMessages) => [
+      ...currentMessages.filter((message) => message.key !== id),
     ]);
   }
 
   return (
     <View style={styles.container}>
-      <Header headerText="Stress sammeln" />
+      <Header headerText="Was tut mir gut?" />
       <ScrollView>
         {showInfo ? (
-          <InfoText text={stressSammelnText} />
+          <InfoText text={wasTutMirNichtGutText} />
         ) : (
           <View>
             <View>
               <View style={styles.inputContainer}>
                 <TextInput
-                  style={styles.stressInput}
-                  placeholder="Schreib ein Stressthema"
+                  style={styles.messageInput}
+                  placeholder="Das tut mir nicht gut..."
                   onChangeText={handleInputChange}
                   ref={(input) => {
                     this.textInput = input;
                   }}
                 />
                 <View style={styles.addButton}>
-                  <Text
-                    style={styles.buttonText}
-                    onPress={handleStressorSubmit}
-                  >
+                  <Text style={styles.buttonText} onPress={handleSubmit}>
                     +
                   </Text>
                 </View>
@@ -93,11 +83,7 @@ export default function StressSammelnScreen({ navigation }) {
                 </View>
               )}
             </View>
-            <StressorList
-              stressors={stressors}
-              toggleCrossOut={toggleCrossOut}
-              deleteItem={handleDeleteItem}
-            />
+            <StressorList stressors={messages} deleteItem={handleDeleteItem} />
           </View>
         )}
         <View style={styles.buttonView}>
@@ -125,7 +111,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginBottom: 12,
   },
-  stressInput: {
+  messageInput: {
     paddingHorizontal: 12,
     backgroundColor: "white",
     borderRadius: 20,

@@ -5,9 +5,12 @@ import { StyleSheet } from "react-native";
 import HomeScreen from "./screens/HomeScreen";
 import KursScreen from "./screens/KursScreen";
 import UebungenScreen from "./screens/UebungenScreen";
+import NotizenScreen from "./screens/NotizenScreen";
 import StressSammelnScreen from "./screens/StressSammelnScreen";
 import StressAbschreibenScreen from "./screens/StressAbschreibenScreen";
 import PositiveBotschaftenScreen from "./screens/PositiveBotschaftenScreen";
+import WasTutMirGutScreen from "./screens/WasTutMirGutScreen";
+import WasTutMirNichtGutScreen from "./screens/WasTutMirGutScreen";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons/faTrashCan";
@@ -36,6 +39,11 @@ export default function App() {
           options={{ title: "Übungen" }}
         ></Stack.Screen>
         <Stack.Screen
+          name="Notizen"
+          component={NotizenScreen}
+          options={{ title: "Notizen" }}
+        ></Stack.Screen>
+        <Stack.Screen
           name="PositiveBotschaften"
           component={PositiveBotschaftenScreen}
           options={{ title: "Positive Botschaften" }}
@@ -49,6 +57,16 @@ export default function App() {
           name="StressAbschreiben"
           component={StressAbschreibenScreen}
           options={{ title: "Stress abschreiben" }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="WasTutMirGut"
+          component={WasTutMirGutScreen}
+          options={{ title: "Was tut mir gut?" }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="WasTutMirNichtGut"
+          component={WasTutMirNichtGutScreen}
+          options={{ title: "Was tut mir nicht gut?" }}
         ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
