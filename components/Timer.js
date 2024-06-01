@@ -9,10 +9,12 @@ import { Audio } from "expo-av";
 export default function Timer() {
   // button für timer start und wenn läuft auch für reset, zeitanzeige daneben, countdown, wenn timeout===0 klingelgeräusch wiedergeben oder vibration
   const [timerRunning, setTimerRunning] = useState(false);
-  const [countdownSeconds, setCountdownSeconds] = useState(0.5 * 60);
+  const [countdownSeconds, setCountdownSeconds] = useState(12 * 60);
   const [isPaused, setIsPaused] = useState(true);
   const [duration, setDuration] = useState(12);
   const [oneSecondTimeout, setOneSecondTimeout] = useState(null);
+
+  const [sound, setSound] = useState();
 
   useEffect(() => {
     if (timerRunning && !isPaused && countdownSeconds > 0) {
@@ -52,7 +54,10 @@ export default function Timer() {
 
   if (countdownSeconds === 0) {
     playSound();
+    setDuration(inputValue);
+    setTimerRunning(false);
   }
+
   async function playSound() {
     console.log("Loading Sound");
     const { sound } = await Audio.Sound.createAsync(
@@ -82,18 +87,20 @@ export default function Timer() {
   //   }
   // });
   //   }
+  console.log("duration", duration);
 
   return (
     <View>
       {!timerRunning && (
-        <View style={styles.durationPlayContainer}>
+        <View style={styles.durationPlayPauseCancelContainer}>
           <View style={styles.durationContainer}>
             <Text style={styles.timerHeadline}>Dauer in Minuten:</Text>
             <TextInput
               style={styles.timerDuration}
               keyboardType="numeric"
               onChangeText={handleNumberChange}
-              defaultValue="12"
+              // defaultValue={duration}
+              value={`${duration}`}
               autFocus={true}
               maxLength={2}
             />
@@ -101,12 +108,12 @@ export default function Timer() {
           <CustomButton iconName={"play"} handlerFunction={handleTimerToggle} />
         </View>
       )}
-      <View style={styles.durationPlayContainer}>
+      <View style={styles.durationPlayPauseCancelContainer}>
         {timerRunning && (
           <View style={styles.durationContainer}>
             <Text style={styles.infoMessage}>
               {countdownSeconds > 0 &&
-                `Countdown:\n${Math.floor(countdownSeconds / 60)}:${
+                `verbleibend:\n${Math.floor(countdownSeconds / 60)}:${
                   countdownSeconds % 60 <= 9
                     ? "0" + (countdownSeconds % 60)
                     : countdownSeconds % 60
@@ -151,11 +158,10 @@ const styles = StyleSheet.create({
     width: 50,
     backgroundColor: "white",
   },
-  durationPlayContainer: {
+  durationPlayPauseCancelContainer: {
     flexDirection: "row",
     gap: 12,
     marginBottom: 24,
-    justifyContent: "space-between",
     width: "100%",
   },
   durationContainer: {

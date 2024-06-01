@@ -23,10 +23,12 @@ const mainNavItems = [
   {
     navDestination: "Notizen",
     buttonText: "Notizen",
+    imagePath: "./../assets/images/notizen.jpg",
   },
   {
     navDestination: "Kalender",
     buttonText: "Kalender",
+    imagePath: "./../assets/images/kalender.jpg",
   },
   {
     navDestination: "Einstellungen",

@@ -34,6 +34,10 @@ export default function NavButtonForGrid({
     (image = require("./../assets/images/meditationen.jpg"));
   navDestination === "WasTutMirGut" &&
     (image = require("./../assets/images/wald-familie.jpg"));
+  navDestination === "Kalender" &&
+    (image = require("./../assets/images/kalender.jpg"));
+  navDestination === "Notizen" &&
+    (image = require("./../assets/images/notizen.jpg"));
 
   console.log(image);
 
