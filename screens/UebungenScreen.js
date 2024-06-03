@@ -11,8 +11,18 @@ const mainNavItems = [
     imagePath: "./../assets/images/positiveBotschaften.jpg",
   },
   {
+    navDestination: "SymptomListe",
+    buttonText: "Symptomliste",
+    imagePath: "./../assets/images/general.jpg",
+  },
+  {
+    navDestination: "WiderspruecheFinden",
+    buttonText: "Widersprüche finden",
+    imagePath: "./../assets/images/general.jpg",
+  },
+  {
     navDestination: "StressSammeln",
-    buttonText: "Stress sammeln",
+    buttonText: "Stress erkennen",
     imagePath: "./../assets/images/stressSammeln.jpg",
     // opacity: true,
   },

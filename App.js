@@ -6,11 +6,13 @@ import HomeScreen from "./screens/HomeScreen";
 import KursScreen from "./screens/KursScreen";
 import UebungenScreen from "./screens/UebungenScreen";
 import NotizenScreen from "./screens/NotizenScreen";
-import StressSammelnScreen from "./screens/StressSammelnScreen";
-import StressAbschreibenScreen from "./screens/StressAbschreibenScreen";
-import PositiveBotschaftenScreen from "./screens/PositiveBotschaftenScreen";
-import WasTutMirGutScreen from "./screens/WasTutMirGutScreen";
-import WasTutMirNichtGutScreen from "./screens/WasTutMirNichtGutScreen";
+import PositiveBotschaftenScreen from "./screens/uebungen/PositiveBotschaftenScreen";
+import SymptomListeScreen from "./screens/uebungen/SymptomlisteScreen";
+import WiederspruecheFindenScreen from "./screens/uebungen/WiderspruecheFindenScreen";
+import StressSammelnScreen from "./screens/uebungen/StressSammelnScreen";
+import StressAbschreibenScreen from "./screens/uebungen/StressAbschreibenScreen";
+import WasTutMirGutScreen from "./screens/uebungen/WasTutMirGutScreen";
+import WasTutMirNichtGutScreen from "./screens/uebungen/WasTutMirNichtGutScreen";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons/faTrashCan";
@@ -49,9 +51,19 @@ export default function App() {
           options={{ title: "Positive Botschaften" }}
         ></Stack.Screen>
         <Stack.Screen
+          name="SymptomListe"
+          component={SymptomListeScreen}
+          options={{ title: "Symptomliste" }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="WiderspruecheFinden"
+          component={WiederspruecheFindenScreen}
+          options={{ title: "Widersprüche finden" }}
+        ></Stack.Screen>
+        <Stack.Screen
           name="StressSammeln"
           component={StressSammelnScreen}
-          options={{ title: "Stress sammeln" }}
+          options={{ title: "Stress erkennen" }}
         ></Stack.Screen>
         <Stack.Screen
           name="StressAbschreiben"

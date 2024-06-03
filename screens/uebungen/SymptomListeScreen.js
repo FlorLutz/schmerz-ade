@@ -1,14 +1,14 @@
 import { StyleSheet, View, Text, ScrollView, TextInput } from "react-native";
 import React, { useState } from "react";
-import StressorList from "../components/StressorList";
+import StressorList from "../../components/StressorList";
 import "react-native-get-random-values";
 import { v4 as uuid } from "uuid";
-import { stressSammelnText } from "../lib/texts";
-import Header from "../components/Header";
-import InfoText from "../components/InfoText";
-import InputWithAdd from "../components/InputWithAdd";
+import { symptomListeText } from "../../lib/texts";
+import Header from "../../components/Header";
+import InfoText from "../../components/InfoText";
+import InputWithAdd from "../../components/InputWithAdd";
 
-export default function StressSammelnScreen({ navigation }) {
+export default function SymptomListeScreen({ navigation }) {
   const [showInfo, setShowInfo] = useState(true);
   const [enteredStressor, setEnteredStressor] = useState();
   const [stressors, setStressors] = useState([]);
@@ -60,15 +60,15 @@ export default function StressSammelnScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Header headerText="Stress sammeln" />
+      <Header headerText="Symptomliste" />
       <ScrollView>
         {showInfo ? (
-          <InfoText text={stressSammelnText} />
+          <InfoText text={symptomListeText} />
         ) : (
           <View>
             <View>
               <InputWithAdd
-                placeHolder="Schreib ein Stressthema"
+                placeHolder="Dein Symptom"
                 onInputChange={handleInputChange}
                 onSubmit={handleStressorSubmit}
               />

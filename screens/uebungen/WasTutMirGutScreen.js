@@ -2,19 +2,19 @@ import { StyleSheet, View, Text, ScrollView, TextInput } from "react-native";
 import React, { useState } from "react";
 import "react-native-get-random-values";
 import { v4 as uuid } from "uuid";
-import { wasTutMirNichtGutText } from "../lib/texts";
-import Header from "../components/Header";
-import StressorList from "../components/StressorList";
-import InfoText from "../components/InfoText";
-import InputWithAdd from "../components/InputWithAdd";
+import { wasTutMirGutText } from "../../lib/texts";
+import Header from "../../components/Header";
+import StressorList from "../../components/StressorList";
+import InfoText from "../../components/InfoText";
+import InputWithAdd from "../../components/InputWithAdd";
 
-export default function WasTutMirNichtGutScreen({ navigation }) {
+export default function WasTutMirGutScreen({ navigation }) {
   const [showInfo, setShowInfo] = useState(true);
   const [enteredMessage, setEnteredMessage] = useState();
   const [messages, setMessages] = useState([
-    { message: "ständiger Lärm", key: 1 },
-    { message: "keine Pausen", key: 2 },
-    { message: "Multitasking", key: 3 },
+    { message: "warmes Bad im Kerzenschein", key: 1 },
+    { message: "Spaziergang im Wald", key: 2 },
+    { message: "Lesen vorm Einschlafen", key: 3 },
   ]);
   const [isInvalidInput, setIsInvalidInput] = useState(false);
 
@@ -53,15 +53,15 @@ export default function WasTutMirNichtGutScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Header headerText="Was tut mir nicht gut?" />
+      <Header headerText="Was tut mir gut?" />
       <ScrollView>
         {showInfo ? (
-          <InfoText text={wasTutMirNichtGutText} />
+          <InfoText text={wasTutMirGutText} />
         ) : (
           <View>
             <View>
               <InputWithAdd
-                placeHolder="Das tut mir nicht gut..."
+                placeHolder="Das tut mir gut..."
                 onInputChange={handleInputChange}
                 onSubmit={handleSubmit}
               />

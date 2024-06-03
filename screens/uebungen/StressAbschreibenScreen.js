@@ -9,10 +9,10 @@ import {
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import Timer from "../components/Timer";
-import { stressAbschreibenText } from "../lib/texts";
-import Header from "../components/Header";
-import InfoText from "../components/InfoText";
+import Timer from "../../components/Timer";
+import { stressAbschreibenText } from "../../lib/texts";
+import Header from "../../components/Header";
+import InfoText from "../../components/InfoText";
 
 export default function SressAbschreibenScreen({ navigation }) {
   const [showInfo, setShowInfo] = useState(true);

@@ -1,12 +1,12 @@
 import { StyleSheet, View, Text, ScrollView, TextInput } from "react-native";
 import React, { useState } from "react";
-import PositiveBotschaftenList from "./../components/PositiveBotschaftenList";
+import PositiveBotschaftenList from "../../components/PositiveBotschaftenList";
 import "react-native-get-random-values";
 import { v4 as uuid } from "uuid";
-import { positiveBotschaftenText } from "../lib/texts";
-import Header from "../components/Header";
-import InfoText from "../components/InfoText";
-import InputWithAdd from "../components/InputWithAdd";
+import { positiveBotschaftenText } from "../../lib/texts";
+import Header from "../../components/Header";
+import InfoText from "../../components/InfoText";
+import InputWithAdd from "../../components/InputWithAdd";
 
 export default function PositiveBotschaftenScreen({ navigation }) {
   const [showInfo, setShowInfo] = useState(true);

@@ -19,6 +19,7 @@ const mainNavItems = [
     navDestination: "Meditationen",
     buttonText: "Meditationen",
     imagePath: "./../assets/images/meditationen.jpg",
+    upcoming: true,
   },
   {
     navDestination: "Notizen",
@@ -33,10 +34,12 @@ const mainNavItems = [
   {
     navDestination: "Einstellungen",
     buttonText: "Einstellungen",
+    imagePath: "./../assets/images/einstellungen.jpg",
   },
   {
     navDestination: "Registrieren",
     buttonText: "Registrieren",
+    imagePath: "./../assets/images/registrieren.jpg",
   },
 ];
 

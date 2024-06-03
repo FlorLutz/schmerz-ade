@@ -1,21 +1,17 @@
 import { StyleSheet, View, Text, ScrollView, TextInput } from "react-native";
 import React, { useState } from "react";
+import StressorList from "../../components/StressorList";
 import "react-native-get-random-values";
 import { v4 as uuid } from "uuid";
-import { wasTutMirGutText } from "../lib/texts";
-import Header from "../components/Header";
-import StressorList from "../components/StressorList";
-import InfoText from "../components/InfoText";
-import InputWithAdd from "../components/InputWithAdd";
+import { stressSammelnText } from "../../lib/texts";
+import Header from "../../components/Header";
+import InfoText from "../../components/InfoText";
+import InputWithAdd from "../../components/InputWithAdd";
 
-export default function WasTutMirGutScreen({ navigation }) {
+export default function StressSammelnScreen({ navigation }) {
   const [showInfo, setShowInfo] = useState(true);
-  const [enteredMessage, setEnteredMessage] = useState();
-  const [messages, setMessages] = useState([
-    { message: "warmes Bad im Kerzenschein", key: 1 },
-    { message: "Spaziergang im Wald", key: 2 },
-    { message: "Lesen vorm Einschlafen", key: 3 },
-  ]);
+  const [enteredStressor, setEnteredStressor] = useState();
+  const [stressors, setStressors] = useState([]);
   const [isInvalidInput, setIsInvalidInput] = useState(false);
 
   function toggleShowInfo() {
@@ -23,47 +19,58 @@ export default function WasTutMirGutScreen({ navigation }) {
   }
 
   function handleInputChange(enteredText) {
-    setEnteredMessage(enteredText);
+    setEnteredStressor(enteredText);
   }
 
-  function handleSubmit() {
-    if (enteredMessage.trim() === "") {
+  function handleStressorSubmit() {
+    if (enteredStressor.trim() === "") {
       setIsInvalidInput(true);
       this.textInput.clear();
     } else {
       const id = uuid();
-      setMessages((currentMessages) => [
-        ...currentMessages,
+      setStressors((currentStressors) => [
         {
           key: id,
-          message: enteredMessage,
+          message: enteredStressor,
+          isCrossedOut: false,
         },
+        ...currentStressors,
       ]);
       setIsInvalidInput(false);
-      setEnteredMessage("");
+      setEnteredStressor("");
       this.textInput.clear();
     }
   }
 
+  function toggleCrossOut(id) {
+    setStressors((currentStressors) => [
+      ...currentStressors.map((stressor) =>
+        stressor.key !== id
+          ? stressor
+          : { ...stressor, isCrossedOut: !stressor.isCrossedOut }
+      ),
+    ]);
+  }
+
   function handleDeleteItem(id) {
-    setMessages((currentMessages) => [
-      ...currentMessages.filter((message) => message.key !== id),
+    setStressors((currentStressors) => [
+      ...currentStressors.filter((stressor) => stressor.key !== id),
     ]);
   }
 
   return (
     <View style={styles.container}>
-      <Header headerText="Was tut mir gut?" />
+      <Header headerText="Stress erkennen" />
       <ScrollView>
         {showInfo ? (
-          <InfoText text={wasTutMirGutText} />
+          <InfoText text={stressSammelnText} />
         ) : (
           <View>
             <View>
               <InputWithAdd
-                placeHolder="Das tut mir gut..."
+                placeHolder="Schreib ein Stressthema"
                 onInputChange={handleInputChange}
-                onSubmit={handleSubmit}
+                onSubmit={handleStressorSubmit}
               />
               {isInvalidInput && (
                 <View>
@@ -74,7 +81,11 @@ export default function WasTutMirGutScreen({ navigation }) {
                 </View>
               )}
             </View>
-            <StressorList stressors={messages} deleteItem={handleDeleteItem} />
+            <StressorList
+              stressors={stressors}
+              toggleCrossOut={toggleCrossOut}
+              deleteItem={handleDeleteItem}
+            />
           </View>
         )}
         <View style={styles.buttonView}>

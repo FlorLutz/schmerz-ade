@@ -7,6 +7,7 @@ const mainNavItems = [
   {
     navDestination: "WasIstApp",
     buttonText: "Was ist die Schmerz-ade!-App?",
+    imagePath: "./../assets/images/app.jpg",
   },
   {
     navDestination: "IntroTMS",

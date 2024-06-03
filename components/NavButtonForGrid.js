@@ -17,6 +17,7 @@ export default function NavButtonForGrid({
   imagePath,
   premium,
   opacity,
+  upcoming,
 }) {
   //WORK HERE ON CONDITIONAL IMAGES!
   // const image = imagePath ? imagePath : "./../assets/images/general.jpg";
@@ -38,6 +39,12 @@ export default function NavButtonForGrid({
     (image = require("./../assets/images/kalender.jpg"));
   navDestination === "Notizen" &&
     (image = require("./../assets/images/notizen.jpg"));
+  navDestination === "Einstellungen" &&
+    (image = require("./../assets/images/einstellungen.jpg"));
+  navDestination === "Registrieren" &&
+    (image = require("./../assets/images/registrieren.jpg"));
+  navDestination === "WasIstApp" &&
+    (image = require("./../assets/images/app.jpg"));
 
   console.log(image);
 
@@ -49,13 +56,13 @@ export default function NavButtonForGrid({
       style={[
         styles.navButtonView,
         //Bsp. für nicht verfügbare Elemente
-        (premium || opacity) && { opacity: 0.6 },
+        (premium || opacity || upcoming) && { opacity: 0.6 },
       ]}
     >
       <Pressable
         style={styles.navButtonPressable}
         onPress={() => navigation.navigate(navDestination)}
-        disabled={premium ? true : false}
+        disabled={premium || upcoming ? true : false}
       >
         <ImageBackground
           source={image}
@@ -63,12 +70,12 @@ export default function NavButtonForGrid({
           // style={{ resizeMode: "stretch" }}
           resizeMode="cover"
         >
-          {premium && (
+          {(premium || upcoming) && (
             <View
               style={{
-                flexDirection: "row",
+                flexDirection: "column",
                 backgroundColor: "white",
-                gap: 16,
+                gap: 6,
                 marginBottom: 60,
                 justifyContent: "center",
                 alignItems: "center",
@@ -83,7 +90,8 @@ export default function NavButtonForGrid({
                   color: "#0c4a6e",
                 }}
               >
-                Nur in Premium verfügbar
+                {premium && "Nur in Premium verfügbar"}
+                {upcoming && "Inhalt folgt"}
               </Text>
               <FontAwesomeIcon icon={faLock} style={{ color: "#0c4a6e" }} />
             </View>

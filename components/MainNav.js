@@ -5,7 +5,6 @@ import NavButtonForGrid from "./NavButtonForGrid";
 
 export default function MainNav({ navigation, navItems }) {
   return (
-    // <View style={styles.mainNavView}>
     <FlatList
       data={navItems}
       keyExtractor={(navItem) => navItem.navDestination}
@@ -17,29 +16,18 @@ export default function MainNav({ navigation, navItems }) {
           imagePath={item.imagePath}
           premium={item.premium}
           opacity={item.opacity}
+          upcoming={item.upcoming}
         />
       )}
       numColumns={2}
-      style={styles.mainNavScrollView}
+      style={styles.mainNavFlatList}
       contentContainerStyle={{ justifyContent: "space-between" }}
-      // horizontal={true}
-      // contentContainerStyle={{ height: 300, flexWrap: "wrap" }}
-    >
-      {/* {navItems.map((navItem) => (
-        <NavButtonForGrid
-          key={navItem.navDestination}
-          navigation={navigation}
-          navDestination={navItem.navDestination}
-          buttonText={navItem.buttonText}
-        />
-      ))} */}
-    </FlatList>
-    // </View>
+    />
   );
 }
 
 const styles = StyleSheet.create({
-  mainNavScrollView: {
+  mainNavFlatList: {
     flex: 1,
     width: "90%",
     // alignItems: "center",
@@ -48,6 +36,4 @@ const styles = StyleSheet.create({
     // gap: 20,
     // height: "500",
   },
-  // mainNavView: {
-  // },
 });
