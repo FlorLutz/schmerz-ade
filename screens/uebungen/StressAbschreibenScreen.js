@@ -9,8 +9,10 @@ import {
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import Timer from "../components/Timer";
-import { stressAbschreibenText } from "../lib/texts";
+import Timer from "../../components/Timer";
+import { stressAbschreibenText } from "../../lib/texts";
+import Header from "../../components/Header";
+import InfoText from "../../components/InfoText";
 
 export default function SressAbschreibenScreen({ navigation }) {
   const [showInfo, setShowInfo] = useState(true);
@@ -25,22 +27,10 @@ export default function SressAbschreibenScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <View>
-          <Text style={styles.headline}>Stress abschreiben</Text>
-        </View>
-        <View style={styles.backView}>
-          <Text
-            style={styles.backText}
-            onPress={() => navigation.navigate("Uebungen")}
-          >
-            zurück
-          </Text>
-        </View>
-      </View>
+      <Header headerText="Stress abschreiben" />
       <ScrollView>
         {showInfo ? (
-          <Text style={styles.infoText}>{stressAbschreibenText}</Text>
+          <InfoText text={stressAbschreibenText} />
         ) : (
           <View>
             <Timer />
@@ -84,32 +74,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 24,
     paddingHorizontal: 24,
-  },
-  headerContainer: {
-    flexDirection: "row",
-    alignItems: "flex-end",
-    gap: 30,
-    marginBottom: 36,
-  },
-  headline: {
-    fontSize: 34,
-    fontWeight: "bold",
-    color: "#0c4a6e",
-  },
-  backView: {
-    borderRadius: 20,
-    backgroundColor: "#0c4a6e",
-    width: "25%",
-  },
-  backText: {
-    padding: 12,
-    textAlign: "center",
-    fontWeight: "bold",
-    fontSize: 18,
-    color: "#7dd3fc",
-  },
-  infoText: {
-    fontSize: 18,
   },
   inputContainer: {
     flexDirection: "row",

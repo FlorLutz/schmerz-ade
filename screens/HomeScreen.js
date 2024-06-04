@@ -2,42 +2,51 @@ import React from "react";
 import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import NavFooter from "../components/NavFooter";
 import MainNav from "../components/MainNav";
+import Header from "../components/Header";
 
 const mainNavItems = [
   {
     navDestination: "Kurs",
     buttonText: "Kurs",
+    imagePath: "./../assets/images/kurs.jpg",
   },
   {
     navDestination: "Uebungen",
     buttonText: "Übungen",
+    imagePath: "./../assets/images/uebungen.jpg",
+  },
+  {
+    navDestination: "Meditationen",
+    buttonText: "Meditationen",
+    imagePath: "./../assets/images/meditationen.jpg",
+    upcoming: true,
   },
   {
     navDestination: "Notizen",
     buttonText: "Notizen",
+    imagePath: "./../assets/images/notizen.jpg",
   },
   {
     navDestination: "Kalender",
     buttonText: "Kalender",
+    imagePath: "./../assets/images/kalender.jpg",
   },
   {
     navDestination: "Einstellungen",
     buttonText: "Einstellungen",
+    imagePath: "./../assets/images/einstellungen.jpg",
   },
   {
     navDestination: "Registrieren",
     buttonText: "Registrieren",
+    imagePath: "./../assets/images/registrieren.jpg",
   },
 ];
 
 export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.headline}>Schmerz ade!</Text>
-        {/* change image to actual logo later */}
-        <Image source={require("../assets/icon.png")} style={styles.image} />
-      </View>
+      <Header headerText="Schmerz ade!" isHome={true} />
       <MainNav navigation={navigation} navItems={mainNavItems} />
       <NavFooter navigation={navigation} />
     </View>
@@ -50,20 +59,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#7dd3fc",
     alignItems: "center",
     paddingVertical: 24,
-  },
-  headerContainer: {
-    flexDirection: "row",
-    alignItems: "flex-end",
-    gap: 24,
-    marginBottom: 36,
-  },
-  headline: {
-    fontSize: 34,
-    fontWeight: "bold",
-    color: "#0c4a6e",
-  },
-  image: {
-    width: 50,
-    height: 50,
   },
 });

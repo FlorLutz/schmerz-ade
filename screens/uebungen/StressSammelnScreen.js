@@ -1,9 +1,12 @@
 import { StyleSheet, View, Text, ScrollView, TextInput } from "react-native";
 import React, { useState } from "react";
-import StressorList from "../components/StressorList";
+import StressorList from "../../components/StressorList";
 import "react-native-get-random-values";
 import { v4 as uuid } from "uuid";
-import { stressSammelnText } from "../lib/texts";
+import { stressSammelnText } from "../../lib/texts";
+import Header from "../../components/Header";
+import InfoText from "../../components/InfoText";
+import InputWithAdd from "../../components/InputWithAdd";
 
 export default function StressSammelnScreen({ navigation }) {
   const [showInfo, setShowInfo] = useState(true);
@@ -28,7 +31,7 @@ export default function StressSammelnScreen({ navigation }) {
       setStressors((currentStressors) => [
         {
           key: id,
-          stressor: enteredStressor,
+          message: enteredStressor,
           isCrossedOut: false,
         },
         ...currentStressors,
@@ -57,44 +60,18 @@ export default function StressSammelnScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <View>
-          <Text style={styles.headline}>Stress sammeln</Text>
-        </View>
-        <View style={styles.backView}>
-          <Text
-            style={styles.backText}
-            onPress={() => navigation.navigate("Uebungen")}
-          >
-            zurück
-          </Text>
-        </View>
-      </View>
+      <Header headerText="Stress erkennen" />
       <ScrollView>
         {showInfo ? (
-          <Text style={styles.infoText}>{stressSammelnText}</Text>
+          <InfoText text={stressSammelnText} />
         ) : (
           <View>
-            {/* refactoring!!! */}
             <View>
-              <View style={styles.inputContainer}>
-                <TextInput
-                  style={styles.stressInput}
-                  placeholder="Schreib ein Stressthema"
-                  onChangeText={handleInputChange}
-                  ref={(input) => {
-                    this.textInput = input;
-                  }}
-                />
-                <View style={styles.addButton}>
-                  <Text
-                    style={styles.buttonText}
-                    onPress={handleStressorSubmit}
-                  >
-                    +
-                  </Text>
-                </View>
-              </View>
+              <InputWithAdd
+                placeHolder="Schreib ein Stressthema"
+                onInputChange={handleInputChange}
+                onSubmit={handleStressorSubmit}
+              />
               {isInvalidInput && (
                 <View>
                   <Text style={styles.invalidInputText}>
@@ -129,50 +106,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 24,
     paddingHorizontal: 24,
-  },
-  headerContainer: {
-    flexDirection: "row",
-    alignItems: "flex-end",
-    gap: 30,
-    marginBottom: 36,
-  },
-  headline: {
-    fontSize: 34,
-    fontWeight: "bold",
-    color: "#0c4a6e",
-  },
-  backView: {
-    borderRadius: 20,
-    backgroundColor: "#0c4a6e",
-    width: "25%",
-  },
-  backText: {
-    padding: 12,
-    textAlign: "center",
-    fontWeight: "bold",
-    fontSize: 18,
-    color: "#7dd3fc",
-  },
-  infoText: {
-    fontSize: 18,
-  },
-  inputContainer: {
-    flexDirection: "row",
-    gap: 20,
-    justifyContent: "space-between",
-    marginBottom: 12,
-  },
-  stressInput: {
-    paddingHorizontal: 12,
-    backgroundColor: "white",
-    borderRadius: 20,
-    fontSize: 18,
-    width: "70%",
-  },
-  addButton: {
-    borderRadius: 20,
-    backgroundColor: "#0c4a6e",
-    alignSelf: "center",
   },
   invalidInputText: {
     color: "red",
