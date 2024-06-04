@@ -7,7 +7,7 @@ import KursScreen from "./screens/KursScreen";
 import UebungenScreen from "./screens/UebungenScreen";
 import NotizenScreen from "./screens/NotizenScreen";
 import PositiveBotschaftenScreen from "./screens/uebungen/PositiveBotschaftenScreen";
-import SymptomListeScreen from "./screens/uebungen/SymptomlisteScreen";
+import SymptomListeScreen from "./screens/uebungen/SymptomListeScreen";
 import WiederspruecheFindenScreen from "./screens/uebungen/WiderspruecheFindenScreen";
 import StressSammelnScreen from "./screens/uebungen/StressSammelnScreen";
 import StressAbschreibenScreen from "./screens/uebungen/StressAbschreibenScreen";

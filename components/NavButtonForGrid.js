@@ -7,8 +7,7 @@ import {
   View,
   Platform,
 } from "react-native";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faLock } from "@fortawesome/free-solid-svg-icons/faLock";
+import BlockingBanner from "./BlockingBanner";
 
 export default function NavButtonForGrid({
   navigation,
@@ -63,6 +62,7 @@ export default function NavButtonForGrid({
         style={styles.navButtonPressable}
         onPress={() => navigation.navigate(navDestination)}
         disabled={premium || upcoming ? true : false}
+        android_ripple={{ color: "#ccc" }}
       >
         <ImageBackground
           source={image}
@@ -70,32 +70,7 @@ export default function NavButtonForGrid({
           // style={{ resizeMode: "stretch" }}
           resizeMode="cover"
         >
-          {(premium || upcoming) && (
-            <View
-              style={{
-                flexDirection: "column",
-                backgroundColor: "white",
-                gap: 6,
-                marginBottom: 60,
-                justifyContent: "center",
-                alignItems: "center",
-                paddingVertical: 8,
-              }}
-            >
-              <Text
-                style={{
-                  textAlign: "center",
-                  fontWeight: "bold",
-                  fontSize: 14,
-                  color: "#0c4a6e",
-                }}
-              >
-                {premium && "Nur in Premium verfügbar"}
-                {upcoming && "Inhalt folgt"}
-              </Text>
-              <FontAwesomeIcon icon={faLock} style={{ color: "#0c4a6e" }} />
-            </View>
-          )}
+          <BlockingBanner premium={premium} upcomming={upcoming} />
           <Text style={styles.navButtonText}>{buttonText}</Text>
         </ImageBackground>
       </Pressable>

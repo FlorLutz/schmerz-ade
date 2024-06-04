@@ -1,4 +1,11 @@
-import { StyleSheet, View, Text, ScrollView, TextInput } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  ScrollView,
+  TextInput,
+  Pressable,
+} from "react-native";
 import React, { useState } from "react";
 import StressorList from "../../components/StressorList";
 import "react-native-get-random-values";
