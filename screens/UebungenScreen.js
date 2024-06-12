@@ -13,12 +13,12 @@ const mainNavItems = [
   {
     navDestination: "SymptomListe",
     buttonText: "Symptomliste",
-    imagePath: "./../assets/images/general.jpg",
+    imagePath: "./../assets/images/symptom-liste.jpg",
   },
   {
     navDestination: "WiderspruecheFinden",
     buttonText: "Widersprüche finden",
-    imagePath: "./../assets/images/general.jpg",
+    imagePath: "./../assets/images/widersprueche-finden.jpg",
   },
   {
     navDestination: "StressSammeln",
@@ -40,11 +40,14 @@ const mainNavItems = [
   {
     navDestination: "WasTutMirNichtGut",
     buttonText: "Was tut mir nicht gut?",
+    imagePath: "./../assets/images/was-tut-nicht-gut.jpg",
   },
   {
     navDestination: "WeitereUebung2",
     buttonText: "Weitere Übung 2",
-    premium: true,
+    upcoming: true,
+
+    // premium: true,
   },
 ];
 

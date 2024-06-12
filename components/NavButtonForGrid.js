@@ -44,6 +44,12 @@ export default function NavButtonForGrid({
     (image = require("./../assets/images/registrieren.jpg"));
   navDestination === "WasIstApp" &&
     (image = require("./../assets/images/app.jpg"));
+  navDestination === "WasTutMirNichtGut" &&
+    (image = require("./../assets/images/was-tut-nicht-gut.jpg"));
+  navDestination === "SymptomListe" &&
+    (image = require("./../assets/images/symptom-liste.jpg"));
+  navDestination === "WiderspruecheFinden" &&
+    (image = require("./../assets/images/widersprueche-finden.jpg"));
 
   console.log(image);
 

@@ -19,8 +19,12 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: "row",
     alignItems: "flex-end",
+    justifyContent: "center",
     gap: 20,
-    marginBottom: 16,
+    paddingVertical: 16,
+    width: "100%",
+    // for darker footer
+    // backgroundColor: "#0ea5e9",
   },
   headline: {
     fontSize: 34,

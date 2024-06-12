@@ -52,9 +52,12 @@ const styles = StyleSheet.create({
   footer: {
     flexDirection: "row",
     gap: 12,
-    marginTop: 24,
+    paddingTop: 24,
+    width: "100%",
     position: "static",
+    // paddingBottom: 12,
     bottom: 12,
+    // backgroundColor: "#0ea5e9",
   },
   navButtonsFooter: {
     color: "#0c4a6e",

@@ -58,6 +58,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#7dd3fc",
     alignItems: "center",
-    paddingVertical: 24,
+    paddingVertical: 0,
   },
 });
