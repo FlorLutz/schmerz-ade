@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     fontSize: 34,
     fontWeight: "bold",
     color: "#0c4a6e",
+    textAlign: "center",
   },
   image: {
     width: 100,

@@ -12,18 +12,22 @@ const mainNavItems = [
   {
     navDestination: "IntroTMS",
     buttonText: "Einführung zu TMS",
+    upcoming: true,
   },
   {
     navDestination: "Phase1",
     buttonText: "Phase 1 - Verstehen",
+    upcoming: true,
   },
   {
     navDestination: "Phase2",
     buttonText: "Phase 2 - Verändern",
+    upcoming: true,
   },
   {
     navDestination: "Phase3",
     buttonText: "Phase 3 - Bewahren",
+    upcoming: true,
   },
 ];
 

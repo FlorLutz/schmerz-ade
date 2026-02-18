@@ -2,10 +2,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
+
 import HomeScreen from "./screens/HomeScreen";
-import KursScreen from "./screens/KursScreen";
-import UebungenScreen from "./screens/UebungenScreen";
 import NotizenScreen from "./screens/NotizenScreen";
+
+import UebungenScreen from "./screens/UebungenScreen";
 import PositiveBotschaftenScreen from "./screens/uebungen/PositiveBotschaftenScreen";
 import SymptomListeScreen from "./screens/uebungen/SymptomListeScreen";
 import WiederspruecheFindenScreen from "./screens/uebungen/WiderspruecheFindenScreen";
@@ -13,6 +14,11 @@ import StressSammelnScreen from "./screens/uebungen/StressSammelnScreen";
 import StressAbschreibenScreen from "./screens/uebungen/StressAbschreibenScreen";
 import WasTutMirGutScreen from "./screens/uebungen/WasTutMirGutScreen";
 import WasTutMirNichtGutScreen from "./screens/uebungen/WasTutMirNichtGutScreen";
+
+import KursScreen from "./screens/KursScreen";
+import WasIstAppScreen from "./screens/kursteile/WasIstAppScreen";
+import IntroZuTMSScreen from "./screens/kursteile/IntroZuTMSScreen";
+
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons/faTrashCan";
@@ -34,6 +40,16 @@ export default function App() {
           name="Kurs"
           component={KursScreen}
           options={{ title: "Kursinhalte" }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="WasIstApp"
+          component={WasIstAppScreen}
+          options={{ title: "Was ist die Schmerz-ade!-App?" }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="IntroZuTMS"
+          component={IntroZuTMSScreen}
+          options={{ title: "Einführung zu TMS" }}
         ></Stack.Screen>
         <Stack.Screen
           name="Uebungen"

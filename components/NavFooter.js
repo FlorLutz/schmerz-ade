@@ -55,8 +55,9 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     width: "100%",
     position: "static",
-    // paddingBottom: 12,
     bottom: 12,
+    // for darker footer
+    // paddingBottom: 12,
     // backgroundColor: "#0ea5e9",
   },
   navButtonsFooter: {

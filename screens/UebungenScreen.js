@@ -46,7 +46,6 @@ const mainNavItems = [
     navDestination: "WeitereUebung2",
     buttonText: "Weitere Übung 2",
     upcoming: true,
-
     // premium: true,
   },
 ];
